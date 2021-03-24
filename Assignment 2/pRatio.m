@@ -16,3 +16,8 @@ r_val = [];				% Create the temporary storage of the return value
 r_val = (tan(theta)+1i*tan(tau))/(1-1i*(tan(theta)*tan(tau)));
 p = r_val;
 end
+
+function [theta,tau] = revPRatio(p)
+%REVPRATIO The reverse operation of pRatio(), returns [theta,tau]
+
+end
