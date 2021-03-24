@@ -19,5 +19,6 @@ end
 
 function [theta,tau] = revPRatio(p)
 %REVPRATIO The reverse operation of pRatio(), returns [theta,tau]
+%	p = tan(th)-1/(tan(th) + J(tan(tau)+1/tan(tau)
 
 end
