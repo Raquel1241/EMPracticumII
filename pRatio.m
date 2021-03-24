@@ -15,5 +15,4 @@ r_val = [];				% Create the temporary storage of the return value
 	% function.
 r_val = (tan(theta)+1i*tan(tau))/(1-1i*(tan(theta)*tan(tau)));
 p = r_val;
-
 end
