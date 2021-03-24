@@ -1,0 +1,7 @@
+function [gh,gv] = fRefl(e1,e2,thi)
+%FREFL Fresnel reflection coefficients. [Gamma_H, Gamma_V] from E1, E2 and
+%Theta_i
+%   Using the 
+	
+end
+
