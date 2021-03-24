@@ -10,4 +10,3 @@ sq = sqrt(Ed-sin(Theta_i)^2);
 Gamma_H = (cos(Theta_i)-sq)/(cos(Theta_i)+sq);
 Gamma_V = -(E2*cos(Theta_i)-E1*sq)/(E2*cos(Theta_i)+E1*sq);
 end
-
