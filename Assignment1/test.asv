@@ -23,5 +23,5 @@ c = y(2).*x(2).^deg; % detemine constant
 curve = c./(x.^deg); % fit curve
 hold on
 plot(x, curve, 'r')
-legend('Measured data','Fitted curve')
-hold off
+
+legend('measured data','cos(2x)')
