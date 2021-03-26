@@ -9,9 +9,9 @@ function [theta_r,tau_r] = rPol(f,theta_t,tau_t,R0,H,eta_r)
 %----------------------------------------------------------------
 %	Input options:
 %	f,theta_t,tau_t,R0,H,eta_r
-c		= 299792458;	% [m/s]
-lamb	= c/f;			% [m]
-k		= 2*pi/lamb;	
+c		= 299792458;	% [m/s]	Lightspeed
+lamb	= c/f;			% [m]	Wavelength
+k		= 2*pi/lamb;	% []	Using variable
+
 
 end
-
