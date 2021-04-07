@@ -1,5 +1,5 @@
 function [p] = pRatio(theta,tau)
-%PRATIO Calculate the polarization ratio from theta and tau.
+%PRATIO Calculate the polarization ratio from theta and tau. (1.1)
 %   The polarization ratio p is calculated from theta and tau. This ratio
 %   is to compute the E-field by setting the horizontal amplitude to 1 and
 %   the vertical amplitude to p. This vector is then multiplied by the
