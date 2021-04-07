@@ -12,13 +12,13 @@ v_p = 2*d_min*f; % phase velocity
 % 2.2
 x = session2.task_1_2.position;
 y = session2.task_1_2.voltage;
+deg = 3; % voltage = constant/R^deg
 plot(x, y, 'o')
-title("Grid position vs. receiver voltage")
+title(sprintf("Grid position vs. receiver voltage, x = %d", deg))
 xlabel("Grid position [cm]")
 ylabel("Voltage receiver [V]")
 
 % curve fitting
-deg = 2; % voltage = constant/R^deg
 c = y(2).*x(2).^deg; % detemine constant
 curve = c./(x.^deg); % fit curve
 hold on
