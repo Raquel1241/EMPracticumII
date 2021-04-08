@@ -24,21 +24,28 @@ refl_h		= [0.249086409246808;0.424005836543405;0.598925263840002];
 %					H = 1.7243
 %					theta	tau		R	H
 %[th,ta,R,H] 
-Ah = 1;
+tit			=  ['Horizontally polarized at brewster angle',...
+				'Vertically polarized at brewster angle',...
+				'Circularly polarized at brewster angle',...
+				'Circularly polarized with reflector nearly at transmitter level',...
+				'Circularly polarized with reflector very far away']
+Ah			= [1,1/1.6331e16,1,1,1];
 inp			=	   [0,		0,		5,	1.7243;...
 					0.5*pi, 0,		5,	1.7243;...
 					0,		0.25*pi,5,	1.7243;...
-					0,		0.25*pi,5,	0.01;...
-					0,		0.25*pi,5,	100];
-for i = 3:3
+					0,		0.25*pi,5,	0.001;...
+					0,		0.25*pi,5,	1000];
+for i = 1:5
 	recP(i) = rPol(frequency,inp(i,1),inp(i,2),inp(i,3),inp(i,4),Eta_r);
 	%--------
-	% [Eh,Ev,Eh_dir,Ev_dir,Eh_ref,Ev_ref]
-	[E(i,1),E(i,2),E(i,3),E(i,4),E(i,5),E(i,6)] = eRec(Ah,frequency,inp(i,1),inp(i,2),inp(i,3),inp(i,4),Eta_0,Eta_r);
-
+	%     RECIEVED		|     DIRECT	|    SENT
+	% [Eh_rec,Ev_rec	,Eh_dir,Ev_dir	,Eh_ref,Ev_ref]
+	[E(i,1),E(i,2),E(i,3),E(i,4),E(i,5),E(i,6)] = eRec(Ah(i),frequency,inp(i,1),inp(i,2),inp(i,3),inp(i,4),Eta_0,Eta_r);
+	[X,Y] = recEll(Ah(i),frequency,inp(i,1),inp(i,2),inp(i,3),inp(i,4),Eta_0,Eta_r);
+	plot(X,Y,'*');
+	hold on;
 end
-
-
+figure;
 %% (1.5)
 % Plot Fresnel reflection coefficients vs incident angle for provided
 % dielectric permittivity | find the Brewster angle,
@@ -68,3 +75,4 @@ clear i i_v angle;
 %%%%%%%%%%%%%%%%%%%%%%%
 
 %% Garbage collection
+close;
