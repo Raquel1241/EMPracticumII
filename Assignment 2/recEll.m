@@ -1,4 +1,4 @@
-function [X,Y] = recEll(Ah,f,theta_t,tau_t,R0,H,eta_0,eta_r)
+function [Erh, Erv, Eh_dir, Ev_dir, Eh_ref, Ev_ref] = recEll(Ah,f,theta_t,tau_t,R0,H,eta_0,eta_r)
 %RECELL Summary of this function goes here
 %   Detailed explanation goes here
 th		= atan(R0/(2*H));
@@ -11,11 +11,15 @@ k		= 2*pi/lamb;				% []	Using variable
 pT		= pRatio(theta_t,tau_t);
 
 omega	= 2*pi*f;
-t		= linspace(0,lamb,10);
-Erh		= Ah*exp(-1i*(omega*t-k*R0))*(Gh*exp(1i*k*dR));
+t		= linspace(0,lamb,9000);
+Erh		= Ah*exp(-1i*(omega*t-k*R0))*(1+Gh*exp(1i*k*dR));
 Erv		= Ah*exp(-1i*(omega*t-k*R0))*(pRatio(theta_t,tau_t)+Gv*pRatio(theta_t,tau_t)*exp(1i*k*dR));
 
-X = abs(Erh);
-Y = abs(Erv);
-end
+Eh_ref	= Ah*exp(-1i*(omega*t-k*R0))*(Gh*exp(1i*k*dR));
+Ev_ref	= Ah*exp(-1i*(omega*t-k*R0))*(Gv*pRatio(theta_t,tau_t)*exp(1i*k*dR));
 
+Gh		= 0;
+Gv		= 0;
+Eh_dir	= Ah*exp(-1i*(omega*t-k*R0))*(1+Gh*exp(1i*k*dR));
+Ev_dir	= Ah*exp(-1i*(omega*t-k*R0))*(pRatio(theta_t,tau_t)+Gv*pRatio(theta_t,tau_t)*exp(1i*k*dR));
+end
