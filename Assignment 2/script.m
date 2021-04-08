@@ -72,7 +72,7 @@ ang_brew	= (Gamma(i_v,3)/pi)*180;	% Brewster angle
 plot(Gamma(:,3)/pi,abs(Gamma(:,1)),Gamma(:,3)/pi,abs(Gamma(:,2)),[Gamma(i_v,3)/pi,Gamma(i_v,3)/pi],[0 1],'--k');
 legend('Gamma_H','Gamma_V','Brewster angle');
 ylim([0 1]);
-xlabel('Angle [pi*rad]');
+xlabel('Angle \theta [pi*rad]');
 ylabel('Reflection coefficient []');
 grid on;
 

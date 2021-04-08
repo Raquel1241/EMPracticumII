@@ -4,7 +4,7 @@ function [Gamma_H,Gamma_V] = fRefl(E1,E2,Theta_i)
 %   Using the incident angle (Theta_i) and the permativities from the
 %   media. Assumed is that the dielectrics are nonmagnetic. 
 %	
-%	Theta_i is between 0 and 0.25*pi
+%	Theta_i is between 0 and 0.5*pi
 Ed = E2/E1;
 sq = sqrt(Ed-sin(Theta_i)^2);
 Gamma_H = (cos(Theta_i)-sq)/(cos(Theta_i)+sq);
