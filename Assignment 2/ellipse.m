@@ -16,4 +16,3 @@ X		= a*cos(t)*cos(Theta) - b*sin(t)*sin(Theta);
 Y		= a*cos(t)*sin(Theta) + b*sin(t)*cos(Theta);
 
 end
-

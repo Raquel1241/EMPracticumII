@@ -28,22 +28,22 @@ inp			=	   [0,		0,		5,	1.7243;...
 					0.5*pi, 0,		5,	1.7243;...
 					0,		0.25*pi,5,	1.7243;...
 					0,		0.25*pi,5,	0.001;...
-					0,		0.25*pi,5,	1000];
-Ah			= [1,1/1.6331e16,1,1,1];
+					0,		0.25*pi,5,	1000]; % Create 5 situations.
+Ah			= [1,1/1.6331e16,1,1,1]; % Get amplitudes so that A0 is 1
 tit			=  ["Horizontally polarized at brewster angle";
 				"Vertically polarized at brewster angle";
 				"Circularly polarized at brewster angle";
 				"Circularly polarized with reflector nearly at transmitter level";
-				"Circularly polarized with reflector very far away"];
+				"Circularly polarized with reflector very far away"]; % make plot titles
 for i = 1:5
 	recP(i) = rPol(frequency,inp(i,1),inp(i,2),inp(i,3),inp(i,4),Eta_r);
 	%--------
 	%     RECIEVED		|     DIRECT	|    SENT
 	% [Eh_rec,Ev_rec	,Eh_dir,Ev_dir	,Eh_ref,Ev_ref]
-	[E(i,1),E(i,2),E(i,3),E(i,4),E(i,5),E(i,6)] = eRec(Ah(i),frequency,inp(i,1),inp(i,2),inp(i,3),inp(i,4),Eta_0,Eta_r);
+	%[E(i,1),E(i,2),E(i,3),E(i,4),E(i,5),E(i,6)] = eRec(Ah(i),frequency,inp(i,1),inp(i,2),inp(i,3),inp(i,4),Eta_0,Eta_r);
 	
 	[Eh_rec(i,:),Ev_rec(i,:),Eh_dir(i,:),Ev_dir(i,:),Eh_ref(i,:),Ev_ref(i,:)] = recEll(Ah(i),frequency,inp(i,1),inp(i,2),inp(i,3),inp(i,4),Eta_0,Eta_r);
-	plot(Eh_rec(i,:),Ev_rec(i,:));
+	plot(real(Eh_rec(i,:)),real(Ev_rec(i,:)));
 	hold on;
 	[X,Y] = ellipse(1,inp(i,1),inp(i,2),100);
 	plot(X,Y);

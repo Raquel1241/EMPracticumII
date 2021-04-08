@@ -1,6 +1,10 @@
 function [Eh, Ev, Eh_dir, Ev_dir, Eh_ref, Ev_ref] = eRec(Ah,f,theta_t,tau_t,R0,H,eta_0,eta_r)
 %EREC Recieved EMF amplitudes
-%   Detailed explanation goes here
+%   This function calculates the Electric field amplitudes of the different
+%   paths (direct+reflection, direct only, reflection only). 
+%	---
+%	The use of recEll instead of eRec is advised. As it gives more
+%	information than the amplitudes.
 
 th		= atan(R0/(2*H));
 [Gh,Gv]	= fRefl(eta_0,eta_r,th);
@@ -19,4 +23,5 @@ Ev_dir	= Ah*pT;
 
 Eh_ref	= Ah*(Gh*exp(1i*k*(dR)));
 Ev_ref	= Ah*pT*(Gv*exp(1i*k*(dR)));
+
 end
