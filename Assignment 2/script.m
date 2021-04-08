@@ -27,8 +27,8 @@ refl_h		= [0.249086409246808;0.424005836543405;0.598925263840002];
 inp			=	   [0,		0,		5,	1.7243;...
 					0.5*pi, 0,		5,	1.7243;...
 					0,		0.25*pi,5,	1.7243;...
-					0,		0.25*pi,5,	0.001;...
-					0,		0.25*pi,5,	1000]; % Create 5 situations.
+					0.1*pi,		0.2*pi,5,	0.001;...
+					0.1*pi,		0.2*pi,5,	1000]; % Create 5 situations.
 Ah			= [1,1/1.6331e16,1,1,1]; % Get amplitudes so that A0 is 1
 tit			=  ["Horizontally polarized at brewster angle";
 				"Vertically polarized at brewster angle";
@@ -43,15 +43,19 @@ for i = 1:5
 	%[E(i,1),E(i,2),E(i,3),E(i,4),E(i,5),E(i,6)] = eRec(Ah(i),frequency,inp(i,1),inp(i,2),inp(i,3),inp(i,4),Eta_0,Eta_r);
 	
 	[Eh_rec(i,:),Ev_rec(i,:),Eh_dir(i,:),Ev_dir(i,:),Eh_ref(i,:),Ev_ref(i,:)] = recEll(Ah(i),frequency,inp(i,1),inp(i,2),inp(i,3),inp(i,4),Eta_0,Eta_r);
-	plot(real(Eh_rec(i,:)),real(Ev_rec(i,:)));
+	plot(real(Eh_ref(i,:)),real(Ev_ref(i,:)),'-*y','MarkerEdgeColor',[0.8500 0.3250 0.0980]);
 	hold on;
 	[X,Y] = ellipse(1,inp(i,1),inp(i,2),100);
-	plot(X,Y);
-	legend("Recieve polarization visualization","Transmit polarization visualization");
+	plot(X,Y,'-b');
+	plot(real(Eh_rec(i,:)),real(Ev_rec(i,:)),'-k');
+	legend("Reflected part of the signal","Transmit polarization visualization","Recieve polarization visualization");
 	title(tit(i,:));
 	grid on;
 	xlim([-1.5 1.5]);
+	%xlim([-0.5e-16 0.5e-16]);
+	xlabel("E_H");
 	ylim([-1.5 1.5]);
+	ylabel("E_V");
 	figure;
 end
 
