@@ -20,6 +20,7 @@ refl_h		= [0.249086409246808;0.424005836543405;0.598925263840002];
 %% (1.4)
 % Good examples (with graphic depictions) to show the working functions.
 
+
 %% (1.5)
 % Plot Fresnel reflection coefficients vs incident angle for provided
 % dielectric permittivity | find the Brewster angle,
@@ -30,7 +31,7 @@ for i = 1:1000
 end
 Gamma(:,3)	= angle;
 
-[m_i,i_v]	= min(Gamma(:,2));
+[~,i_v]	= min(Gamma(:,2));
 ang_brew	= (Gamma(i_v,3)/pi)*180;	% Brewster angle
 
 % Plot the reflection coeefficients
@@ -46,3 +47,5 @@ grid on;
 % Assignment 2 Part 2 %
 %%%%%%%%%%%%%%%%%%%%%%%
 
+%% Garbage collection
+close;
