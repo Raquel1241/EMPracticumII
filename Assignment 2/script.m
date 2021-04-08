@@ -12,6 +12,7 @@ Eta_0		= 8.8541878176*10^-12;	% [F/m]
 frequency	= 9.834534138168737e+09;	% [Hz]
 % Dielectric perm.
 Eta			= 2.099308860651484 - 0.019027161099153i;
+Eta_r		= Eta*Eta_0;
 % Dist. betw. ant.
 dist		= 4.944787189721646;	% [m]
 % Reflector height
@@ -19,6 +20,23 @@ refl_h		= [0.249086409246808;0.424005836543405;0.598925263840002];
 
 %% (1.4)
 % Good examples (with graphic depictions) to show the working functions.
+%	Brewster ange:	R = 5
+%					H = 1.7243
+%					theta	tau		R	H
+%[th,ta,R,H] 
+Ah = 1;
+inp			=	   [0,		0,		5,	1.7243;...
+					0.5*pi, 0,		5,	1.7243;...
+					0,		0.25*pi,5,	1.7243;...
+					0,		0.25*pi,5,	0.01;...
+					0,		0.25*pi,5,	100];
+for i = 3:3
+	recP(i) = rPol(frequency,inp(i,1),inp(i,2),inp(i,3),inp(i,4),Eta_r);
+	%--------
+	% [Eh,Ev,Eh_dir,Ev_dir,Eh_ref,Ev_ref]
+	[E(i,1),E(i,2),E(i,3),E(i,4),E(i,5),E(i,6)] = eRec(Ah,frequency,inp(i,1),inp(i,2),inp(i,3),inp(i,4),Eta_0,Eta_r);
+
+end
 
 
 %% (1.5)
@@ -27,7 +45,7 @@ refl_h		= [0.249086409246808;0.424005836543405;0.598925263840002];
 % th_i	= -0.25*pi - atan(R0/(2*H));
 angle	= linspace(0,0.5*pi,1000);
 for i = 1:1000
-	[Gamma(i,1),Gamma(i,2)]	= fRefl(Eta_0,Eta*Eta_0,angle(i)); % [Gh,Gv]
+	[Gamma(i,1),Gamma(i,2)]	= fRefl(Eta_0,Eta_r,angle(i)); % [Gh,Gv]
 end
 Gamma(:,3)	= angle;
 
@@ -41,6 +59,8 @@ ylim([0 1]);
 xlabel('Angle [pi*rad]');
 ylabel('Reflection coefficient []');
 grid on;
+
+clear i i_v angle;
 
 %% Assignment 2 Part 2
 %%%%%%%%%%%%%%%%%%%%%%%

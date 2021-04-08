@@ -19,9 +19,9 @@ R1		= 2*sqrt(H^2 + 0.25*R0^2);	% [m]	Path length reflection
 % Gamma_h	= (cos(theta_t)-sqrt(eta_r/eta_0 - sin(theta_t)^2))/(cos(theta_t)+sqrt(eta_r/eta_0 - sin(theta_t)^2));
 % Gamma_v	= -(eta_r*cos(theta_t)-eta_0*sqrt(eta_r/eta_0 - sin(theta_t)^2))/(eta_r*cos(theta_t)+eta_0*sqrt(eta_r/eta_0 - sin(theta_t)^2));
 
-theta_i				= -0.25*pi - atan(R0/(2*H));
-[Gamma_h, Gamma_v]	= fRefl(eta_0,eta_1,theta_i);
+theta_i				= atan(R0/(2*H));
+[Gamma_h, Gamma_v]	= fRefl(eta_0,eta_r,theta_i);
 
-Pr		= pRatio(theta_t,tau_t) * (1+Gamma_v*e^(1i*k*(R1-R0)))/(1+Gamma_h*e^(1i*k*(R1-R0)));
+Pr		= pRatio(theta_t,tau_t) * (1+Gamma_v*exp(1i*k*(R1-R0))/(1+Gamma_h*exp(1i*k*(R1-R0))));
 
 end
