@@ -3,8 +3,8 @@ function [X,Y] = ellipse(Amp,Theta,Tau,n)
 %   Make X and Y points of an ellipse with:
 %	-----
 %	Amp		= Amplitude
-%	Theta	= Angle from horizon	[0		2*pi]
-%	Tau		= Ellipticness			[0	 0.25*pi]
+%	Theta	= Angle from horizon	[     -pi		  pi]
+%	Tau		= Ellipticness			[-0.25*pi	 0.25*pi]
 %	n		= Amount of data points 
 
 t		= linspace(0,2*pi,n);

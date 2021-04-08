@@ -48,4 +48,3 @@ grid on;
 %%%%%%%%%%%%%%%%%%%%%%%
 
 %% Garbage collection
-close;
