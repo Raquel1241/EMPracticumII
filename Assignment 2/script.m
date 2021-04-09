@@ -42,7 +42,7 @@ for i = 1:5
 	% [Eh_rec,Ev_rec	,Eh_dir,Ev_dir	,Eh_ref,Ev_ref]
 	%[E(i,1),E(i,2),E(i,3),E(i,4),E(i,5),E(i,6)] = eRec(Ah(i),frequency,inp(i,1),inp(i,2),inp(i,3),inp(i,4),Eta_0,Eta_r);
 	
-	[Eh_rec(i,:),Ev_rec(i,:),Eh_dir(i,:),Ev_dir(i,:),Eh_ref(i,:),Ev_ref(i,:)] = recEll(Ah(i),frequency,inp(i,1),inp(i,2),inp(i,3),inp(i,4),Eta_0,Eta_r);
+	[Eh_rec(i,:),Ev_rec(i,:),Eh_dir(i,:),Ev_dir(i,:),Eh_ref(i,:),Ev_ref(i,:)] = recEll(Ah(i),frequency,inp(i,1),inp(i,2),inp(i,3),inp(i,4),Eta_0,Eta_r,0);
 	plot(real(Eh_ref(i,:)),real(Ev_ref(i,:)),'-*y','MarkerEdgeColor',[0.8500 0.3250 0.0980]);
 	hold on;
 	[X,Y] = ellipse(1,inp(i,1),inp(i,2),100);
@@ -81,24 +81,3 @@ ylabel('Reflection coefficient []');
 grid on;
 
 clear i i_v angle;
-
-
-%%%%%%%%%%%%%%%%%%%%%%%
-% Assignment 2 Part 2 %
-%%%%%%%%%%%%%%%%%%%%%%%
-
-%% Garbage collection
-%close all;
-%clearvars;
-
-% Load the data
-%load('group-05.mat');
-%task2 = session2.task2;
-
-%% test
-%phi = 0.5*pi;
-%tau = 0;
-%[X,Y] = ellipse(1,phi,tau,100);
-%plot(X,Y);
-
-
