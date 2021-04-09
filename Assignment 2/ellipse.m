@@ -11,8 +11,14 @@ t		= linspace(0,2*pi,n);
 % Tau		= 0.1*pi;
 a		= Amp;
 b		= a*tan(Tau);
+
 % Theta	= 0.05*pi;
-X		= a*cos(t)*cos(Theta) - b*sin(t)*sin(Theta);
-Y		= a*cos(t)*sin(Theta) + b*sin(t)*cos(Theta);
+c = cos(Theta);
+if c < 1e-16  % to work with the limit
+  c = 0;
+end
+
+X		= a*cos(t)*c - b*sin(t)*sin(Theta);
+Y		= a*cos(t)*sin(Theta) + b*sin(t)*c;
 
 end

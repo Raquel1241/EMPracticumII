@@ -72,7 +72,7 @@ Gamma(:,3)	= angle;
 [~,i_v]	= min(Gamma(:,2));
 ang_brew	= (Gamma(i_v,3)/pi)*180;	% Brewster angle
 
-% Plot the reflection coeefficients
+% Plot the reflection coefficients
 plot(Gamma(:,3)/pi,abs(Gamma(:,1)),Gamma(:,3)/pi,abs(Gamma(:,2)),[Gamma(i_v,3)/pi,Gamma(i_v,3)/pi],[0 1],'--k');
 legend('Gamma_H','Gamma_V','Brewster angle');
 ylim([0 1]);
@@ -82,14 +82,23 @@ grid on;
 
 clear i i_v angle;
 
-%% Assignment 2 Part 2
+
 %%%%%%%%%%%%%%%%%%%%%%%
 % Assignment 2 Part 2 %
 %%%%%%%%%%%%%%%%%%%%%%%
 
 %% Garbage collection
-%close;
+%close all;
+%clearvars;
+
+% Load the data
+%load('group-05.mat');
+%task2 = session2.task2;
 
 %% test
-% [X,Y] = ellipse(1,0.5*pi,0,100);
-% plot(X,Y);
+%phi = 0.5*pi;
+%tau = 0;
+%[X,Y] = ellipse(1,phi,tau,100);
+%plot(X,Y);
+
+
