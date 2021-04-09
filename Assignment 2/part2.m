@@ -6,21 +6,25 @@
 close all;
 clearvars;
 
-%tau = 0;  % set tau in radians (linear polarization: 0)
+tau = 0;  % set tau in radians (linear polarization: 0)
 %tau = 0.25*pi;  % set tau in radians (circular polarization: 0.25*pi)
-tau = 0.15*pi;  % set tau in radians
-A_0 = 1;  % transmitted signal amplitude
-%phi = 0.5*pi;  % set phi in radians (vertical polarization: 0.5*pi)
+%tau = 0.15*pi;  % set tau in radians
+
+phi = 0.5*pi;  % set phi in radians (vertical polarization: 0.5*pi)
 %phi = 0;  % set phi in radians (horizontal polarization: 0)
 %phi = 0.25*pi;  % set phi in radians
-phi = 0.2*pi;  % set phi in radians
+%phi = 0.2*pi;  % set phi in radians
+
+A_0 = 1;  % transmitted signal amplitude
 eps_0 = 8.8541878176*10^-12;	% free space permittivity [F/m]
 n = 100;  % number of data points
 
-multipath = 1;  % switch: direct or multipath
-metal = 0;  % switch: dielectric or metal reflector surface
-brewster_switch = 1;  % switch: use brewster angle on dielectric plate
-                      % with circular polarization
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+multipath = 1;  % switch: direct or multipath                            %
+metal = 0;  % switch: dielectric or metal reflector surface               %
+brewster_switch = 0;  % switch: use brewster angle on dielectric plate   %
+                      % with circular polarization                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % load the data
 load('group-05.mat');
@@ -75,9 +79,15 @@ Erv_norm(Erv_norm<1e-16) = 0;
 
 % generate plots of polarization patterns of the transmitted and received waves
 figure;
+set(gca, "linewidth", 4, "fontsize", 20);
+
 hold on;
-plot(X, Y, '-b');
+plot(X, Y, '-b', 'linewidth', 6);
 hold on;
-plot(real(Erh_norm), real(Erv_norm), '-r');
+plot(real(Erh_norm), real(Erv_norm), '-r', 'linewidth', 6);
+ylabel("E_{V}")
+xlabel("E_{H}")
+legend("Transmitted", "Received");
+title("Polarization patterns");
 grid on;
 hold off;
